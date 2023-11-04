@@ -1,3 +1,4 @@
+/*
 let img;
 let vid;
 let theta = 0;
@@ -35,3 +36,4 @@ function draw() {
   pop();
   theta += 0.05;
 }
+*/
