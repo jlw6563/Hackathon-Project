@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style> iframe{ border: none; } </style>
+</head>
+<body>
+    <button>Switch!</button>
+    <iframe src="https://editor.p5js.org/jakewardell9/full/7Swcr5gge" width="1262" height="650" id="Jake"></iframe>
+    <iframe src="https://editor.p5js.org/owenbk/full/O_GzConPl" width="1600" height="900" id="owen"></iframe>
+    <iframe src="https://editor.p5js.org/BokeChinmay/full/xlThMiZi1" width="800" height="400" id="chin1"></iframe>
+    <iframe src="https://editor.p5js.org/BokeChinmay/full/I4MmwR3rA" width="800" height="400" id="chin2"></iframe>
+    <iframe src="https://editor.p5js.org/BokeChinmay/full/6pbVPMtKe" width="800" height="400" id="chin3"></iframe>
+    <script>
+        let frames = [];
+        let frameHeightWidth = [];
+        let count = 0;
+        frames = document.querySelectorAll("iframe");
+
+        for(let i = 0; i < frames.length;i++){
+            frameHeightWidth.push({w:frames[i].style.width, h:frames[i].style.height});
+            frames[i].style.position = "absolute";
+            frames[i].style.height = "0";
+            frames[i].style.width = "0";
+            if(i == count){
+                frames[i].style.position = "static";
+                frames[i].style.height = frameHeightWidth[i].h;
+                frames[i].style.width = frameHeightWidth[i].w;
+            }
+        }
+        
+        document.querySelector("button").onclick = function(){
+            count++;
+            if(count >= frames.length){
+            count = 0;
+            }
+            for(let i = 0; i < frames.length;i++){
+                if(i == count){
+                    frames[i].style.position = "static";
+                    frames[i].style.height = frameHeightWidth[i].h;
+                    frames[i].style.width = frameHeightWidth[i].w;
+                }
+                else{
+                    frames[i].style.position = "absolute";
+                    frames[i].style.height = "0";
+                    frames[i].style.width = "0";
+                }
+            }
+        }
+
+        
+        
+        
+        
+        
+        
+        
+    </script>
+</body>
+</html>

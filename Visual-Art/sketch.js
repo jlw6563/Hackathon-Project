@@ -1,9 +1,9 @@
+//This holds individual squares
 let objs = [];
 let selecter = [];
-let count = 1;
 
 
-if(count == 1){
+
 function setup() {
   createCanvas(1250, 600, WEBGL);
   background(171);
@@ -21,7 +21,7 @@ function setup() {
     yStart += 1;
   }
 }
-}
+
 
 
 
@@ -81,6 +81,9 @@ function draw(){
 }
 
 function checkingGrid(indexRow, indexColumn){
+  //This is similar to the game of life search index
+  //Works as intended however is a little repetitive
+
   //For top left corner
   if(indexRow == 0 && indexColumn ==0){
     objs[indexRow][indexColumn].active = 0;
@@ -105,6 +108,7 @@ function checkingGrid(indexRow, indexColumn){
     objs[indexRow][indexColumn + 1].active = 0;
     objs[indexRow - 1][indexColumn].active = 0;
     objs[indexRow - 1][indexColumn + 1].active = 0;
+  //Checks top row
   }else if(indexRow == 0){
     objs[indexRow][indexColumn].active = 0;
     objs[indexRow][indexColumn + 1].active = 0;
@@ -112,6 +116,7 @@ function checkingGrid(indexRow, indexColumn){
     objs[indexRow + 1][indexColumn].active = 0;
     objs[indexRow + 1][indexColumn + 1].active = 0;
     objs[indexRow + 1][indexColumn - 1].active = 0;
+  //Checks bottom row
   }else if(indexRow == 23){
     objs[indexRow][indexColumn].active = 0;
     objs[indexRow][indexColumn + 1].active = 0;
@@ -119,6 +124,7 @@ function checkingGrid(indexRow, indexColumn){
     objs[indexRow - 1][indexColumn].active = 0;
     objs[indexRow - 1][indexColumn + 1].active = 0;
     objs[indexRow - 1][indexColumn - 1].active = 0;
+  //Checks left column
   }else if(indexColumn == 0){
   objs[indexRow][indexColumn].active = 0;
   objs[indexRow + 1][indexColumn].active = 0;
@@ -126,13 +132,15 @@ function checkingGrid(indexRow, indexColumn){
   objs[indexRow][indexColumn + 1].active = 0;
   objs[indexRow - 1][indexColumn + 1].active = 0;
   objs[indexRow + 1][indexColumn + 1].active = 0;
-  }else if(indexColumn == 0){
+  //Checks right column
+  }else if(indexColumn == 49){
     objs[indexRow][indexColumn].active = 0;
     objs[indexRow + 1][indexColumn].active = 0;
     objs[indexRow - 1][indexColumn].active = 0;
     objs[indexRow][indexColumn - 1].active = 0;
     objs[indexRow - 1][indexColumn - 1].active = 0;
     objs[indexRow + 1][indexColumn - 1].active = 0;
+  //Checks everything that isn't the above
   }else{
     objs[indexRow][indexColumn].active = 0;
     objs[indexRow - 1][indexColumn].active = 0;
