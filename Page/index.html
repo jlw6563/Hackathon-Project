@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header">
+        <h1>WGSS - p5 Catalog</h1>
+        <button>Switch!</button>
+    </div>
+    <iframe src="https://editor.p5js.org/jakewardell9/full/7Swcr5gge" width="1262" height="650" id="jake" data-margin="7.5%"></iframe>
+    <iframe src="https://editor.p5js.org/owenbk/full/O_GzConPl" width="1200" height="650" id="owen" data-margin="9%"></iframe>
+    <iframe src="https://editor.p5js.org/BokeChinmay/full/xlThMiZi1" width="807" height="447" id="chin1" data-margin="23%"></iframe>
+    <iframe src="https://editor.p5js.org/BokeChinmay/full/I4MmwR3rA" width="807" height="447" id="chin2" data-margin="23%"></iframe>
+    <iframe src="https://editor.p5js.org/BokeChinmay/full/6pbVPMtKe" width="807" height="447" id="chin3" data-margin="23%"></iframe>
+    <iframe src="https://editor.p5js.org/ignaciodeorbe/full/0Xqi2WXfV" width="1200" height="650" data-margin="9%"></iframe>
+    <script>
+        let frames = [];
+        let frameHeightWidth = [];
+        let count = 0;
+        frames = document.querySelectorAll("iframe");
+
+        for(let i = 0; i < frames.length;i++){
+            frameHeightWidth.push({w:frames[i].style.width, h:frames[i].style.height});
+            frames[i].style.position = "absolute";
+            frames[i].style.height = "0";
+            frames[i].style.width = "0";
+            frames[i].style.marginLeft ="0";
+            if(i == count){
+                frames[i].style.position = "static";
+                frames[i].style.height = frameHeightWidth[i].h;
+                frames[i].style.width = frameHeightWidth[i].w;
+                frames[i].style.marginLeft = frames[i].dataset.margin;
+            }
+        }
+        
+        document.querySelector("button").onclick = function(){
+            count++;
+            if(count >= frames.length){
+            count = 0;
+            }
+            for(let i = 0; i < frames.length;i++){
+                if(i == count){
+                    frames[i].style.position = "static";
+                    frames[i].style.height = frameHeightWidth[i].h;
+                    frames[i].style.width = frameHeightWidth[i].w;
+                    frames[i].style.marginLeft = frames[i].dataset.margin;
+                }
+                else{
+                    frames[i].style.position = "absolute";
+                    frames[i].style.height = "0";
+                    frames[i].style.width = "0";
+                    frames[i].style.marginLeft ="0";
+
+                }
+            }
+        }   
+    </script>
+</body>
+</html>
